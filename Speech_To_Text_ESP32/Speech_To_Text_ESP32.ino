@@ -10,6 +10,8 @@ void record()
   CloudSpeechClient *cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);
   cloudSpeechClient->Transcribe(audio);
   delete cloudSpeechClient;
+  String data = cloudSpeechClient->Transcribe(audio);
+  Serial.println(data);
   delete audio;
 }
 

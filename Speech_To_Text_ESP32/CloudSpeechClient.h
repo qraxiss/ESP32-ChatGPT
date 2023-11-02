@@ -18,7 +18,7 @@ class CloudSpeechClient
 public:
   CloudSpeechClient(Authentication authentication);
   ~CloudSpeechClient();
-  void Transcribe(Audio *audio);
+  String Transcribe(Audio *audio);
 };
 
 #endif

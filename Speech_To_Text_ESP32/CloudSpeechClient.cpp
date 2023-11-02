@@ -35,7 +35,7 @@ void CloudSpeechClient::PrintHttpBody2(Audio *audio)
   }
 }
 
-void CloudSpeechClient::Transcribe(Audio *audio)
+String CloudSpeechClient::Transcribe(Audio *audio)
 {
   String HttpBody1 = "{\"config\":{\"encoding\":\"LINEAR16\",\"sampleRateHertz\":16000,\"languageCode\":\"tr-TR\"},\"audio\":{\"content\":\"";
   String HttpBody3 = "\"}}\r\n\r\n";
@@ -65,7 +65,7 @@ void CloudSpeechClient::Transcribe(Audio *audio)
 
   // "result" içindeki "message" içindeki "content" değerini alın
   String content = responseDoc["results"][0]["alternatives"][0]["transcript"].as<String>();
+  Serial.println(content);
 
-  Serial.print("content--");
-  Serial.print(content);
+  return content;
 }
