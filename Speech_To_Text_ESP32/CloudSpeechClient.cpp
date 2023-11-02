@@ -7,7 +7,10 @@ CloudSpeechClient::CloudSpeechClient(Authentication authentication)
   this->authentication = authentication;
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED)
+  {
+    Serial.print("Connecting to WiFi..\n");
     delay(1000);
+  }
   client.setCACert(root_ca);
   if (!client.connect(server, 443))
     Serial.println("Connection failed!");
