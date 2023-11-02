@@ -58,10 +58,7 @@ void CloudSpeechClient::Transcribe(Audio *audio)
   }
 
   int postion = My_Answer.indexOf('{');
-  Serial.println(postion);
   ans = My_Answer.substring(postion);
-  Serial.print("Json daata--");
-  Serial.print(ans);
 
   DynamicJsonDocument responseDoc(1024);
   deserializeJson(responseDoc, ans);
