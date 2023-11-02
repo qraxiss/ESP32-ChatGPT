@@ -6,18 +6,21 @@
 #include "driver/i2s.h"
 #include "esp_system.h"
 
-enum MicType {
+enum MicType
+{
   ADMP441,
   ICS43434,
   M5GO,
   M5STACKFIRE
 };
 
-class I2S {
+class I2S
+{
   i2s_bits_per_sample_t BITS_PER_SAMPLE;
+
 public:
   I2S(MicType micType);
-  int Read(char* data, int numData);
+  int Read(char *data, int numData);
   int GetBitPerSample();
 };
 
