@@ -1,10 +1,8 @@
 #include "Audio.h"
 #include "CloudSpeechClient.h"
 
-void setup()
+String record()
 {
-  Serial.begin(115200);
-  delay(500);
   Serial.println("\r\nRecord start!\r\n");
   Audio *audio = new Audio(ICS43434);
   audio->Record();
@@ -15,6 +13,14 @@ void setup()
   delete audio;
 }
 
+void setup()
+{
+  Serial.begin(115200);
+  delay(500);
+}
+
 void loop()
 {
+  record();
+  delay(1000);
 }
