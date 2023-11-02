@@ -1,8 +1,8 @@
 #ifndef _NETWORK_PARAM_H
 #define _NETWORK_PARAM_H
 
-const char *ssid = "SSID";
-const char *password = "PASS";
+const char *ssid = "İbrahim";
+const char *password = "44444444";
 const char*  server = "speech.googleapis.com";
 
 // To get the certificate for your region run:
