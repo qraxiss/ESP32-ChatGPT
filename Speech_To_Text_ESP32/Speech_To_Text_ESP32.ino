@@ -1,15 +1,14 @@
 #include "Audio.h"
 #include "CloudSpeechClient.h"
 
+CloudSpeechClient *cloudSpeechClient;
+
 void record()
 {
   Serial.println("\r\nRecord start!\r\n");
   Audio *audio = new Audio(ICS43434);
   audio->Record();
   Serial.println("Recording Completed. Now Processing...");
-  CloudSpeechClient *cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);
-  cloudSpeechClient->Transcribe(audio);
-  delete cloudSpeechClient;
   String data = cloudSpeechClient->Transcribe(audio);
   Serial.println(data);
   delete audio;
@@ -17,6 +16,7 @@ void record()
 
 void setup()
 {
+  cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);
   Serial.begin(115200);
   delay(500);
 }
