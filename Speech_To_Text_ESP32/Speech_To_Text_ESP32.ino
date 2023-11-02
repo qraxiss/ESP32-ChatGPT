@@ -1,6 +1,12 @@
 #include "Audio.h"
 #include "CloudSpeechClient.h"
 
+#define uart_ens 14
+#define RXp0 3
+#define TXp0 1
+#define RXp2 16
+#define TXp2 17
+
 CloudSpeechClient *cloudSpeechClient;
 
 String record()
@@ -10,7 +16,6 @@ String record()
   audio->Record();
   Serial.println("Recording Completed. Now Processing...");
   String data = cloudSpeechClient->Transcribe(audio);
-  Serial.println(data);
   delete audio;
 
   return data;
@@ -18,13 +23,32 @@ String record()
 
 void setup()
 {
-  cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);
-  Serial.begin(115200);
+
+  Serial.begin(115200, SERIAL_8N1, RXp2, TXp2);
+  Serial2.begin(9600)
+
+      cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);
+
   delay(500);
 }
 
 void loop()
 {
-  record();
-  delay(1000);
+
+  if (Serial.available())
+  {
+    String data = Serial.readStringUntil('\n');
+    if (data.length() > 0)
+    {
+      float floatData = data.toFloat();
+      Serial.print("floatData: ");
+      Serial.print(floatData, 2);
+
+      if (floatData > 0.5)
+      {
+        String transcript = record();
+        Serial.println(transcript);
+      }
+    }
+  }
 }
