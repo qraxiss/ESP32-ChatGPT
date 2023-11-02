@@ -3,7 +3,7 @@
 
 CloudSpeechClient *cloudSpeechClient;
 
-void record()
+String record()
 {
   Serial.println("\r\nRecord start!\r\n");
   Audio *audio = new Audio(ICS43434);
@@ -12,6 +12,8 @@ void record()
   String data = cloudSpeechClient->Transcribe(audio);
   Serial.println(data);
   delete audio;
+
+  return data;
 }
 
 void setup()
