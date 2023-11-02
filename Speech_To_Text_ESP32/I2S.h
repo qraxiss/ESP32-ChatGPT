@@ -24,4 +24,4 @@ public:
   int GetBitPerSample();
 };
 
-#endif // _I2S_H
+#endif

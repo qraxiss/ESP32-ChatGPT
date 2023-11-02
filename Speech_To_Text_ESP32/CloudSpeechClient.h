@@ -21,4 +21,4 @@ public:
   void Transcribe(Audio *audio);
 };
 
-#endif // _CLOUDSPEECHCLIENT_H
+#endif

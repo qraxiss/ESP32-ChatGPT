@@ -7,7 +7,6 @@ void setup()
   delay(500);
   Serial.println("\r\nRecord start!\r\n");
   Audio *audio = new Audio(ICS43434);
-  // Audio* audio = new Audio(M5STACKFIRE);
   audio->Record();
   Serial.println("Recording Completed. Now Processing...");
   CloudSpeechClient *cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);

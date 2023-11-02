@@ -5,13 +5,6 @@
 #define PIN_I2S_DIN 34
 #define PIN_I2S_DOUT 25
 
-// This I2S specification :
-//  -   LRC high is channel 2 (right).
-//  -   LRC signal transitions once each word.
-//  -   DATA is valid on the CLOCK rising edge.
-//  -   Data bits are MSB first.
-//  -   DATA bits are left-aligned with respect to LRC edge.
-//  -   DATA bits are right-shifted by one with respect to LRC edges.
 I2S::I2S(MicType micType)
 {
   if (micType == M5GO || micType == M5STACKFIRE)
