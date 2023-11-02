@@ -1,7 +1,7 @@
 #include "Audio.h"
 #include "CloudSpeechClient.h"
 
-String record()
+void record()
 {
   Serial.println("\r\nRecord start!\r\n");
   Audio *audio = new Audio(ICS43434);
