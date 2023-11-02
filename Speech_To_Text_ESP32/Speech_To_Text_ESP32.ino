@@ -47,7 +47,7 @@ void loop()
       if (floatData > 0.5)
       {
         String transcript = record();
-        Serial.println(transcript);
+        Serial2.println(transcript);
       }
     }
   }
