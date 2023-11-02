@@ -25,9 +25,9 @@ void setup()
 {
 
   Serial.begin(115200, SERIAL_8N1, RXp2, TXp2);
-  Serial2.begin(9600)
+  Serial2.begin(9600);
 
-      cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);
+  cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);
 
   delay(500);
 }
@@ -42,7 +42,7 @@ void loop()
     {
       float floatData = data.toFloat();
       Serial.print("floatData: ");
-      Serial.print(floatData, 2);
+      Serial.println(floatData, 2);
 
       if (floatData > 0.5)
       {
