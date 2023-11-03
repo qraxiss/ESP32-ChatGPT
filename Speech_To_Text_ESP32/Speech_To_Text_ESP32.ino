@@ -11,43 +11,32 @@ CloudSpeechClient *cloudSpeechClient;
 
 String record()
 {
-  Serial.println("\r\nRecord start!\r\n");
   Audio *audio = new Audio(ICS43434);
   audio->Record();
-  Serial.println("Recording Completed. Now Processing...");
   String data = cloudSpeechClient->Transcribe(audio);
   delete audio;
 
   return data;
 }
 
-void setup()
-{
-
-  Serial.begin(115200, SERIAL_8N1, RXp2, TXp2);
-  Serial2.begin(9600);
-
+void setup() 
+{ 
+  Serial.begin(115200);
   cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);
-
-  delay(500);
 }
 
 void loop()
 {
-
   if (Serial.available())
   {
     String data = Serial.readStringUntil('\n');
     if (data.length() > 0)
     {
       float floatData = data.toFloat();
-      Serial.print("floatData: ");
-      Serial.println(floatData, 2);
-
       if (floatData > 0.5)
       {
         String transcript = record();
-        Serial2.println(transcript);
+        Serial.println(transcript);
       }
     }
   }
