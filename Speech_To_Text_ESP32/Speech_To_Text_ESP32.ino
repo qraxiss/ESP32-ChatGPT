@@ -22,14 +22,15 @@ String record()
 void setup()
 {
   Serial.begin(115200);
+  Serial2.begin(9600, SERIAL_8N1, RXp2, TXp2);
   cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);
 }
 
 void loop()
 {
-  if (Serial.available())
+  if (Serial2.available())
   {
-    String data = Serial.readStringUntil('\n');
+    String data = Serial2.readStringUntil('\n');
     if (data.length() > 0)
     {
       float floatData = data.toFloat();
