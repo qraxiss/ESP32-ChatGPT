@@ -19,8 +19,8 @@ String record()
   return data;
 }
 
-void setup() 
-{ 
+void setup()
+{
   Serial.begin(115200);
   cloudSpeechClient = new CloudSpeechClient(USE_APIKEY);
 }
@@ -36,7 +36,7 @@ void loop()
       if (floatData > 0.5)
       {
         String transcript = record();
-        Serial.println(transcript);
+        Serial.print(transcript);
       }
     }
   }
